@@ -20,6 +20,10 @@ function getSetupRedirect(to) {
 
 const routes = [
   {
+    path: '/login',
+    redirect: '/',
+  },
+  {
     path: '/crm',
     redirect: '/',
   },
@@ -228,7 +232,16 @@ router.beforeEach(async (to, from, next) => {
     if (landing) next(landing)
     else next()
   } else if (!isLoggedIn) {
-    window.location.href = '/login?redirect-to=/crm'
+    if (
+      typeof window !== 'undefined' &&
+      (window.__crmStandalone ||
+        typeof window.boot === 'undefined' ||
+        import.meta.env.DEV)
+    ) {
+      next()
+    } else {
+      window.location.href = '/login?redirect-to=/crm'
+    }
   } else if (to.matched.length === 0) {
     next({ name: 'Invalid Page' })
   } else if (['Deal', 'Lead'].includes(to.name) && !to.hash) {

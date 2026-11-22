@@ -21,7 +21,12 @@ export const organizationsStore = defineStore('crm-organizations', () => {
         error?.exc_type,
       )
 
-      if (isAuthError) {
+      if (
+        isAuthError &&
+        !window.__crmStandalone &&
+        !import.meta.env.DEV &&
+        typeof window.boot !== 'undefined'
+      ) {
         window.location.href = '/login?redirect-to=/crm'
       }
     },

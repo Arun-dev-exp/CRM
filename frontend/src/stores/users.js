@@ -29,7 +29,13 @@ export const usersStore = defineStore('crm-users', () => {
       return { allUsers, crmUsers }
     },
     onError(error) {
-      if (error && error.exc_type === 'AuthenticationError') {
+      if (
+        error &&
+        error.exc_type === 'AuthenticationError' &&
+        !window.__crmStandalone &&
+        !import.meta.env.DEV &&
+        typeof window.boot !== 'undefined'
+      ) {
         window.location.href = '/login?redirect-to=/crm'
       }
     },

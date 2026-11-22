@@ -24,7 +24,15 @@ export const sessionStore = defineStore('crm-session', () => {
     url: 'logout',
     onSuccess() {
       user.value = null
-      window.location.href = '/login?redirect-to=/crm'
+      if (
+        window.__crmStandalone ||
+        import.meta.env.DEV ||
+        typeof window.boot === 'undefined'
+      ) {
+        router.replace({ path: '/' })
+      } else {
+        window.location.href = '/login?redirect-to=/crm'
+      }
     },
   })
 

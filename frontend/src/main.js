@@ -34,10 +34,17 @@ import {
 
 const isStandalone =
   import.meta.env.DEV ||
+  typeof window === 'undefined' ||
   typeof window.boot === 'undefined' ||
   import.meta.env.VITE_STANDALONE === 'true'
 
 if (isStandalone) {
+  if (typeof window !== 'undefined') {
+    window.__crmStandalone = true
+  }
+  if (typeof document !== 'undefined' && !document.cookie.includes('user_id=')) {
+    document.cookie = 'user_id=Administrator; path=/'
+  }
   installMockApiInterceptor()
 }
 

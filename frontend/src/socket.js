@@ -2,7 +2,13 @@ import { io } from 'socket.io-client'
 import { getCachedListResource, getCachedResource } from 'frappe-ui'
 
 export function initSocket() {
-  if (import.meta.env.DEV) {
+  if (
+    import.meta.env.DEV ||
+    typeof window === 'undefined' ||
+    typeof window.boot === 'undefined' ||
+    Boolean(window.__crmStandalone) ||
+    !window.site_name
+  ) {
     const handlers = {}
     const mockSocket = {
       on(event, fn) {
