@@ -224,7 +224,7 @@ async function markSetupDone() {
   }
 }
 
-usePageMeta(() => ({ title: __('Set up Frappe CRM') }))
+usePageMeta(() => ({ title: __('Set up CRM') }))
 </script>
 
 <style scoped>

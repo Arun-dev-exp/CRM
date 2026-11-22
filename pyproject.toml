@@ -1,9 +1,9 @@
 [project]
 name = "crm"
 authors = [
-    { name = "Frappe Technologies Pvt. Ltd.", email = "shariq@frappe.io"}
+    { name = "Arun-dev-exp", email = "ay556795@gmail.com"}
 ]
-description = "Kick-ass Open Source CRM"
+description = "Modern and Intuitive CRM Platform"
 requires-python = ">=3.10"
 readme = "README.md"
 dynamic = ["version"]
@@ -80,6 +80,6 @@ indent-style = "tab"
 docstring-code-format = true
 
 [project.urls]
-Homepage = "https://frappe.io/crm"
-Repository = "https://github.com/frappe/crm.git"
-"Bug Reports" = "https://github.com/frappe/crm/issues"
+Homepage = "https://github.com/Arun-dev-exp/CRM"
+Repository = "https://github.com/Arun-dev-exp/CRM.git"
+"Bug Reports" = "https://github.com/Arun-dev-exp/CRM/issues"

@@ -2,16 +2,16 @@
 	"private": true,
 	"type": "module",
 	"name": "crm",
-	"description": "Frappe CRM helps you work, not slow you down. Open-source, intuitive, and free from extra costs.",
+	"description": "Modern CRM helps you work, not slow you down. Intuitive, fast, and customizable.",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/frappe/crm.git"
+		"url": "git+https://github.com/Arun-dev-exp/CRM.git"
 	},
-	"homepage": "https://frappe.io/crm",
-	"author": "Frappe Technologies Pvt. Ltd.",
+	"homepage": "https://github.com/Arun-dev-exp/CRM",
+	"author": "Arun-dev-exp",
 	"license": "GPL-3.0",
 	"bugs": {
-		"url": "https://github.com/frappe/crm/issues"
+		"url": "https://github.com/Arun-dev-exp/CRM/issues"
 	},
 	"scripts": {
 		"postinstall": "cd frontend && yarn install --check-files",

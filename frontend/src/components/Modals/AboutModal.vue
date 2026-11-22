@@ -31,7 +31,7 @@
         </div>
         <hr class="border-t my-3 mx-2" />
         <p class="text-sm text-ink-gray-6 px-2 mt-2">
-          © Frappe Technologies Pvt. Ltd. and contributors
+          © CRM
         </p>
       </div>
     </template>
@@ -40,39 +40,21 @@
 <script setup>
 import CRMLogo from '@/components/Icons/CRMLogo.vue'
 import GitHubIcon from '@/components/Icons/GitHubIcon.vue'
-import LucideGlobe from '~icons/lucide/globe'
-import LucideHeadset from '~icons/lucide/headset'
 import LucideBug from '~icons/lucide/bug'
-import LucideBookOpen from '~icons/lucide/book-open'
 import { Dialog } from 'frappe-ui'
 
 let show = defineModel({ type: Boolean })
 
 let links = [
   {
-    label: __('Website'),
-    url: 'https://frappe.io/crm',
-    icon: LucideGlobe,
-  },
-  {
     label: __('GitHub Repository'),
-    url: 'https://github.com/frappe/crm',
+    url: 'https://github.com/Arun-dev-exp/CRM',
     icon: GitHubIcon,
   },
   {
-    label: __('Documentation'),
-    url: 'https://docs.frappe.io/crm',
-    icon: LucideBookOpen,
-  },
-  {
     label: __('Report an Issue'),
-    url: 'https://github.com/frappe/crm/issues',
+    url: 'https://github.com/Arun-dev-exp/CRM/issues',
     icon: LucideBug,
-  },
-  {
-    label: __('Contact Support'),
-    url: 'https://support.frappe.io',
-    icon: LucideHeadset,
   },
 ]
 </script>

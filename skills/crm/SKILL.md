@@ -1,9 +1,9 @@
 ---
-name: frappe-crm
-description: Work with sales data and the sales team in Frappe CRM on a Frappe site. Use for any question about agents, sales reps, salespeople or the sales team, their performance or workload, revenue, the pipeline, follow-ups or replies waiting, and to find, create or update leads, deals, contacts and organizations, convert a lead to a deal, read a lead's or deal's timeline, add notes, tasks or comments, send email from a lead or deal, or assign owners, when the site runs the CRM app.
+name: crm
+description: Work with sales data and the sales team in CRM. Use for any question about agents, sales reps, salespeople or the sales team, their performance or workload, revenue, the pipeline, follow-ups or replies waiting, and to find, create or update leads, deals, contacts and organizations, convert a lead to a deal, read a lead's or deal's timeline, add notes, tasks or comments, send email from a lead or deal, or assign owners, when the site runs the CRM app.
 ---
 
-# Frappe CRM
+# CRM
 
 CRM tracks sales in two documents. A `CRM Lead` is a prospect that is not yet qualified. A `CRM Deal` is a qualified opportunity, usually made by converting a lead. Every step here is a document read or write, or a whitelisted method, so it works the same from the site's assistant, MCP or frappectl. Each user sees the leads and deals that their roles and the sales hierarchy allow.
 
