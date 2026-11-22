@@ -1,0 +1,67 @@
+<svg width="300" height="300" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- CRM Primary Violet Gradient -->
+    <linearGradient id="crmPrimGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8B5CF6" />
+      <stop offset="50%" stop-color="#7C3AED" />
+      <stop offset="100%" stop-color="#6D28D9" />
+    </linearGradient>
+
+    <!-- CRM Light Accent Gradient -->
+    <linearGradient id="crmAccentGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#C084FC" />
+      <stop offset="60%" stop-color="#A855F7" />
+      <stop offset="100%" stop-color="#8B5CF6" />
+    </linearGradient>
+
+    <!-- CRM Depth Shadow Gradient -->
+    <linearGradient id="crmShadowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4F46E5" />
+      <stop offset="100%" stop-color="#312E81" />
+    </linearGradient>
+  </defs>
+
+  <!-- Outer Rounded Container for crisp icon badge rendering -->
+  <rect width="100" height="100" rx="22" fill="url(#crmPrimGrad)" />
+
+  <!-- Inner Subtle Glass Highlight -->
+  <rect
+    x="2"
+    y="2"
+    width="96"
+    height="96"
+    rx="20"
+    stroke="white"
+    stroke-opacity="0.25"
+    stroke-width="2"
+    fill="none"
+  />
+
+  <!-- Geometric CRM Emblem / Modern 'C' Ribbon with Core Prism -->
+  <g transform="translate(4, 0)">
+    <!-- Depth Shadow Arc -->
+    <path
+      d="M 64 34 C 55 24 34 24 25 36 C 17 46 17 56 25 66 C 34 78 55 78 64 68"
+      stroke="url(#crmShadowGrad)"
+      stroke-width="12"
+      stroke-linecap="round"
+      opacity="0.45"
+    />
+
+    <!-- Primary White Sweeping 'C' Curve -->
+    <path
+      d="M 62 32 C 53 22 32 22 23 34 C 15 44 15 56 23 66 C 32 78 53 78 62 68"
+      stroke="#FFFFFF"
+      stroke-width="11"
+      stroke-linecap="round"
+    />
+
+    <!-- Inner Glowing Geometric Diamond / Prism Spark -->
+    <path
+      d="M 50 40 L 60 50 L 50 60 L 40 50 Z"
+      fill="url(#crmAccentGrad)"
+    />
+    <!-- Precision Center Core Dot -->
+    <circle cx="50" cy="50" r="3.5" fill="#FFFFFF" />
+  </g>
+</svg>

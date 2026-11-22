@@ -1,0 +1,110 @@
+<template>
+  <div v-if="tasks.length">
+    <div v-for="(task, i) in tasks" :key="task.name">
+      <div
+        class="activity flex cursor-pointer gap-6 rounded-xl border border-outline-gray-1/60 bg-surface-base p-3 shadow-xs hover:shadow-sm hover:border-outline-gray-2 transition-all my-1.5"
+        @click="modalRef.showTask(task)"
+      >
+        <div class="flex flex-1 flex-col gap-1.5 text-base truncate">
+          <div class="font-medium text-ink-gray-9 truncate">
+            {{ task.title }}
+          </div>
+          <div class="flex gap-1.5 text-ink-gray-8">
+            <div class="flex items-center gap-1.5">
+              <UserAvatar :user="task.assigned_to" size="xs" />
+              {{ getUser(task.assigned_to).full_name }}
+            </div>
+            <div v-if="task.due_date" class="flex items-center justify-center">
+              <DotIcon class="h-2.5 w-2.5 text-ink-gray-5" :radius="2" />
+            </div>
+            <div v-if="task.due_date">
+              <Tooltip :text="formatTaskDue(task, 'long')">
+                <div class="flex gap-2">
+                  <CalendarIcon />
+                  <div>{{ formatTaskDue(task) }}</div>
+                </div>
+              </Tooltip>
+            </div>
+            <div class="flex items-center justify-center">
+              <DotIcon class="h-2.5 w-2.5 text-ink-gray-5" :radius="2" />
+            </div>
+            <div class="flex gap-2">
+              <TaskPriorityIcon :priority="task.priority" />
+              {{ task.priority }}
+            </div>
+          </div>
+        </div>
+        <div class="flex items-center gap-1">
+          <Dropdown
+            :options="taskStatusOptions(modalRef.updateTaskStatus, task)"
+          >
+            <Button
+              :tooltip="__('Change Status')"
+              variant="ghost"
+              class="hover:bg-surface-gray-4"
+              @click.stop.prevent
+            >
+              <TaskStatusIcon :status="task.status" />
+            </Button>
+          </Dropdown>
+          <Dropdown
+            :options="[
+              {
+                label: __('Delete'),
+                icon: 'lucide-trash-2',
+                onClick: () => {
+                  $dialog({
+                    title: __('Delete Task'),
+                    message: __('Are you sure you want to delete this task?'),
+                    actions: [
+                      {
+                        label: __('Delete'),
+                        theme: 'red',
+                        variant: 'solid',
+                        onClick({ close }) {
+                          modalRef.deleteTask(task.name)
+                          close()
+                        },
+                      },
+                    ],
+                  })
+                },
+              },
+            ]"
+          >
+            <Button
+              icon="lucide-more-horizontal"
+              variant="ghost"
+              class="hover:bg-surface-gray-4 text-ink-gray-9"
+              @click.stop.prevent
+            />
+          </Dropdown>
+        </div>
+      </div>
+      <div
+        v-if="i < tasks.length - 1"
+        class="h-px border-t border-outline-elevation-2"
+      />
+    </div>
+  </div>
+</template>
+<script setup>
+import CalendarIcon from '@/components/Icons/CalendarIcon.vue'
+import TaskStatusIcon from '@/components/Icons/TaskStatusIcon.vue'
+import TaskPriorityIcon from '@/components/Icons/TaskPriorityIcon.vue'
+import DotIcon from '@/components/Icons/DotIcon.vue'
+import UserAvatar from '@/components/UserAvatar.vue'
+import { taskStatusOptions } from '@/utils'
+import { formatTaskDue } from '@/utils/task'
+import { usersStore } from '@/stores/users'
+import { globalStore } from '@/stores/global'
+import { Tooltip, Dropdown } from 'frappe-ui'
+
+defineProps({
+  tasks: { type: Array, default: () => [] },
+  modalRef: { type: Object, default: () => ({}) },
+})
+
+const { getUser } = usersStore()
+const { $dialog } = globalStore()
+</script>
