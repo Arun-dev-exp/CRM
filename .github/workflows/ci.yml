@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: [develop, main]
+  pull_request:
+    branches: [develop, main]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Frontend Unit Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Clone @framework/ui dependency
+        run: |
+          git clone --depth 1 --branch develop --filter=blob:none --sparse \
+              https://github.com/frappe/frappe "$GITHUB_WORKSPACE/../frappe"
+          git -C "$GITHUB_WORKSPACE/../frappe" sparse-checkout set ui frappe/geo frappe/public/js/frappe/utils
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Enable Corepack & Yarn
+        run: corepack enable && corepack prepare yarn@1.22.22 --activate
+
+      - name: Install dependencies
+        working-directory: frontend
+        run: yarn install
+
+      - name: Run unit tests
+        working-directory: frontend
+        run: yarn test:run
