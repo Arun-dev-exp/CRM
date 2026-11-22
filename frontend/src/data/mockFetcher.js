@@ -441,6 +441,135 @@ export const demoNotes = [
   },
 ]
 
+export const demoCallLogs = [
+  {
+    name: 'CALL-2026-0001',
+    id: 'CALL-2026-0001',
+    from: '+1 (555) 234-5678',
+    to: '+1 (555) 890-1234',
+    type: 'Outgoing',
+    status: 'Completed',
+    duration: 245,
+    medium: 'Browser Calling',
+    start_time: '2026-11-22 15:30:10',
+    end_time: '2026-11-22 15:34:15',
+    caller: 'Alex Rivera',
+    receiver: null,
+    reference_doctype: 'CRM Lead',
+    reference_docname: 'Sarah Jenkins',
+    recording_url: 'https://example.com/recordings/call-0001.mp3',
+    telephony_medium: 'Twilio',
+    note: 'Discussed Enterprise pilot rollout with 50 agent seats. Follow-up demo set for Tuesday.',
+    creation: '2026-11-22 15:30:10',
+    modified: '2026-11-22 15:34:15',
+  },
+  {
+    name: 'CALL-2026-0002',
+    id: 'CALL-2026-0002',
+    from: '+1 (555) 876-5432',
+    to: '+1 (555) 234-5678',
+    type: 'Incoming',
+    status: 'Completed',
+    duration: 180,
+    medium: 'Browser Calling',
+    start_time: '2026-11-22 14:10:00',
+    end_time: '2026-11-22 14:13:00',
+    caller: null,
+    receiver: 'Sarah Connor',
+    reference_doctype: 'CRM Lead',
+    reference_docname: 'Marcus Vance',
+    recording_url: 'https://example.com/recordings/call-0002.mp3',
+    telephony_medium: 'Twilio',
+    note: 'Inbound inquiry regarding custom CRM pipeline workflow and WhatsApp messaging integration.',
+    creation: '2026-11-22 14:10:00',
+    modified: '2026-11-22 14:13:00',
+  },
+  {
+    name: 'CALL-2026-0003',
+    id: 'CALL-2026-0003',
+    from: '+1 (555) 345-6789',
+    to: '+1 (555) 901-2345',
+    type: 'Outgoing',
+    status: 'Completed',
+    duration: 312,
+    medium: 'Browser Calling',
+    start_time: '2026-11-22 12:45:00',
+    end_time: '2026-11-22 12:50:12',
+    caller: 'Alex Rivera',
+    receiver: null,
+    reference_doctype: 'CRM Deal',
+    reference_docname: 'CloudScale 500-Seat Enterprise Rollout',
+    recording_url: 'https://example.com/recordings/call-0003.mp3',
+    telephony_medium: 'Twilio',
+    note: 'Negotiated final ARR pricing tier and SLA conditions with Head of Procurement.',
+    creation: '2026-11-22 12:45:00',
+    modified: '2026-11-22 12:50:12',
+  },
+  {
+    name: 'CALL-2026-0004',
+    id: 'CALL-2026-0004',
+    from: '+1 (555) 456-7890',
+    to: '+1 (555) 012-3456',
+    type: 'Outgoing',
+    status: 'Busy',
+    duration: 0,
+    medium: 'Browser Calling',
+    start_time: '2026-11-22 11:20:00',
+    end_time: '2026-11-22 11:20:25',
+    caller: 'Sarah Connor',
+    receiver: null,
+    reference_doctype: 'CRM Lead',
+    reference_docname: 'Elena Rostova',
+    recording_url: '',
+    telephony_medium: 'Twilio',
+    note: 'Number busy. Scheduled callback task for 4:30 PM.',
+    creation: '2026-11-22 11:20:00',
+    modified: '2026-11-22 11:20:25',
+  },
+  {
+    name: 'CALL-2026-0005',
+    id: 'CALL-2026-0005',
+    from: '+1 (555) 567-8901',
+    to: '+1 (555) 123-4567',
+    type: 'Outgoing',
+    status: 'Completed',
+    duration: 420,
+    medium: 'Browser Calling',
+    start_time: '2026-11-22 10:15:00',
+    end_time: '2026-11-22 10:22:00',
+    caller: 'Administrator',
+    receiver: null,
+    reference_doctype: 'CRM Deal',
+    reference_docname: 'FinEdge Global Platform Modernization',
+    recording_url: 'https://example.com/recordings/call-0005.mp3',
+    telephony_medium: 'Twilio',
+    note: 'Product demonstration completed. Customer impressed with telecalling speed and instant analytics.',
+    creation: '2026-11-22 10:15:00',
+    modified: '2026-11-22 10:22:00',
+  },
+  {
+    name: 'CALL-2026-0006',
+    id: 'CALL-2026-0006',
+    from: '+1 (555) 678-9012',
+    to: '+1 (555) 234-5678',
+    type: 'Incoming',
+    status: 'Completed',
+    duration: 155,
+    medium: 'Browser Calling',
+    start_time: '2026-11-22 09:30:00',
+    end_time: '2026-11-22 09:32:35',
+    caller: null,
+    receiver: 'Alex Rivera',
+    reference_doctype: 'CRM Lead',
+    reference_docname: 'David Kim',
+    recording_url: 'https://example.com/recordings/call-0006.mp3',
+    telephony_medium: 'Twilio',
+    note: 'Inbound request for API integration documentation with their billing engine.',
+    creation: '2026-11-22 09:30:00',
+    modified: '2026-11-22 09:32:35',
+  },
+]
+
 export const doctypeFields = {
   'CRM Lead': [
     { fieldname: 'name', label: 'ID', fieldtype: 'Data' },
@@ -512,6 +641,21 @@ export const doctypeFields = {
     { fieldname: 'owner', label: 'Owner', fieldtype: 'Link', options: 'User' },
     { fieldname: 'creation', label: 'Created On', fieldtype: 'Datetime' },
     { fieldname: 'modified', label: 'Last Modified', fieldtype: 'Datetime' },
+  ],
+  'CRM Call Log': [
+    { fieldname: 'name', label: 'ID', fieldtype: 'Data' },
+    { fieldname: 'type', label: 'Type', fieldtype: 'Select', options: 'Incoming\nOutgoing' },
+    { fieldname: 'status', label: 'Status', fieldtype: 'Select', options: 'Completed\nBusy\nNo Answer\nFailed' },
+    { fieldname: 'duration', label: 'Duration (s)', fieldtype: 'Int' },
+    { fieldname: 'medium', label: 'Medium', fieldtype: 'Data' },
+    { fieldname: 'caller', label: 'Caller', fieldtype: 'Data' },
+    { fieldname: 'receiver', label: 'Receiver', fieldtype: 'Data' },
+    { fieldname: 'reference_doctype', label: 'Reference Type', fieldtype: 'Link' },
+    { fieldname: 'reference_docname', label: 'Reference Name', fieldtype: 'Dynamic Link' },
+    { fieldname: 'recording_url', label: 'Recording', fieldtype: 'Data' },
+    { fieldname: 'telephony_medium', label: 'Telephony Provider', fieldtype: 'Data' },
+    { fieldname: 'note', label: 'Notes', fieldtype: 'Text' },
+    { fieldname: 'creation', label: 'Call Time', fieldtype: 'Datetime' },
   ],
 }
 
@@ -739,6 +883,32 @@ export function getDoctypeData(doctype, viewType = 'list') {
     }
   }
 
+  if (doctype === 'CRM Call Log') {
+    return {
+      data: demoCallLogs,
+      view_type: 'list',
+      columns: [
+        { label: 'ID', key: 'name', width: '150px' },
+        { label: 'Type', key: 'type', width: '100px' },
+        { label: 'Status', key: 'status', width: '110px' },
+        { label: 'Duration', key: 'duration', width: '110px' },
+        { label: 'Caller / Agent', key: 'caller', width: '140px' },
+        { label: 'Contact', key: 'reference_docname', width: '160px' },
+        { label: 'Provider', key: 'telephony_medium', width: '110px' },
+        { label: 'Call Notes', key: 'note', width: '260px' },
+        { label: 'Call Time', key: 'creation', width: '150px' },
+      ],
+      rows: ['name', 'type', 'status', 'duration', 'caller', 'reference_docname', 'telephony_medium', 'note', 'creation'],
+      fields: doctypeFields['CRM Call Log'],
+      total_count: demoCallLogs.length,
+      row_count: demoCallLogs.length,
+      column_field: 'status',
+      title_field: 'name',
+      is_default: true,
+      views: standardViews.filter((v) => v.dt === 'CRM Call Log'),
+    }
+  }
+
   return {
     data: [],
     columns: [],
@@ -837,6 +1007,17 @@ export const standardViews = [
     public: 1,
     pinned: 1,
   },
+  {
+    name: 'CRM Call Log list',
+    label: 'All Call Logs',
+    type: 'list',
+    dt: 'CRM Call Log',
+    route_name: 'Call Logs',
+    is_standard: 1,
+    is_default: 1,
+    public: 1,
+    pinned: 1,
+  },
 ]
 
 export const defaultDevBoot = {
@@ -889,6 +1070,7 @@ export function getDoc(doctype, name) {
   else if (doctype === 'CRM Organization') list = demoOrganizations
   else if (doctype === 'CRM Task') list = demoTasks
   else if (doctype === 'FCRM Note') list = demoNotes
+  else if (doctype === 'CRM Call Log') list = demoCallLogs
 
   const found = list.find((item) => item.name === name)
   if (found) {
@@ -905,6 +1087,7 @@ export function setValue(doctype, name, fieldname, value) {
   else if (doctype === 'CRM Organization') list = demoOrganizations
   else if (doctype === 'CRM Task') list = demoTasks
   else if (doctype === 'FCRM Note') list = demoNotes
+  else if (doctype === 'CRM Call Log') list = demoCallLogs
 
   const item = list.find((d) => d.name === name)
   if (item) {
@@ -934,6 +1117,7 @@ export function insertDoc(doc) {
   else if (dt === 'CRM Organization') demoOrganizations.unshift(newDoc)
   else if (dt === 'CRM Task') demoTasks.unshift(newDoc)
   else if (dt === 'FCRM Note') demoNotes.unshift(newDoc)
+  else if (dt === 'CRM Call Log') demoCallLogs.unshift(newDoc)
   return newDoc
 }
 
@@ -945,6 +1129,7 @@ export function deleteDoc(doctype, name) {
   else if (doctype === 'CRM Organization') list = demoOrganizations
   else if (doctype === 'CRM Task') list = demoTasks
   else if (doctype === 'FCRM Note') list = demoNotes
+  else if (doctype === 'CRM Call Log') list = demoCallLogs
 
   const idx = list.findIndex((d) => d.name === name)
   if (idx !== -1) {
@@ -970,6 +1155,7 @@ export function getList(doctype, filters = {}) {
   if (doctype === 'CRM Organization') return demoOrganizations
   if (doctype === 'CRM Task') return demoTasks
   if (doctype === 'FCRM Note') return demoNotes
+  if (doctype === 'CRM Call Log') return demoCallLogs
   if (doctype === 'CRM Lead Status' || doctype === 'CRM Deal Status') {
     return [
       { name: 'New', color: 'blue' },
@@ -1092,6 +1278,207 @@ export function commandPaletteSearch(query = '') {
       .filter((o) => !q || o.organization_name?.toLowerCase().includes(q))
       .map((o) => ({ name: o.name, title: o.organization_name, subtitle: o.industry, doctype: 'CRM Organization' })),
   }
+}
+
+export function getTelecrmDashboard(params = {}) {
+  const user = (params.user || '').toLowerCase()
+  const isAlex = user.includes('alex')
+  const isSarah = user.includes('sarah')
+
+  const dialsCount = isAlex ? '482' : isSarah ? '396' : '1,428'
+  const talkTime = isAlex ? '16h 20m' : isSarah ? '13h 45m' : '46h 18m'
+  const callbacks = isAlex ? 8 : isSarah ? 6 : 24
+  const wonRev = isAlex ? '$140,000' : isSarah ? '$110,000' : '$310,000'
+  const connectRate = isAlex ? '71.2%' : isSarah ? '66.8%' : '68.4%'
+
+  return [
+    // Top Row: 5 TeleCRM Key Metrics (w: 4, h: 3 each, total 20 cols)
+    {
+      name: 'calls_dialed',
+      type: 'number_chart',
+      tooltip: 'Total outbound & inbound calls made by sales reps',
+      layout: { x: 0, y: 0, w: 4, h: 3, i: 'calls_dialed' },
+      data: {
+        title: 'Calls Dialed',
+        value: dialsCount,
+        tooltip: 'Total outbound & inbound calls dialed',
+      },
+    },
+    {
+      name: 'connected_rate',
+      type: 'number_chart',
+      tooltip: 'Percentage of dialed calls connected with leads',
+      layout: { x: 4, y: 0, w: 4, h: 3, i: 'connected_rate' },
+      data: {
+        title: 'Connect Rate',
+        value: connectRate,
+        tooltip: 'Calls connected with prospects',
+      },
+    },
+    {
+      name: 'total_talk_time',
+      type: 'number_chart',
+      tooltip: 'Cumulative conversation duration logged by reps',
+      layout: { x: 8, y: 0, w: 4, h: 3, i: 'total_talk_time' },
+      data: {
+        title: 'Total Talk Time',
+        value: talkTime,
+        tooltip: 'Cumulative agent conversation talk time',
+      },
+    },
+    {
+      name: 'callbacks_due',
+      type: 'number_chart',
+      tooltip: 'Follow-ups and callback reminders scheduled',
+      layout: { x: 12, y: 0, w: 4, h: 3, i: 'callbacks_due' },
+      data: {
+        title: 'Pending Callbacks',
+        value: callbacks,
+        tooltip: 'Follow-up calls scheduled for today',
+      },
+    },
+    {
+      name: 'won_deals_value',
+      type: 'number_chart',
+      tooltip: 'Closed won revenue from telephone conversions',
+      layout: { x: 16, y: 0, w: 4, h: 3, i: 'won_deals_value' },
+      data: {
+        title: 'Won Revenue',
+        value: wonRev,
+        tooltip: 'Total ARR generated from closed opportunities',
+      },
+    },
+
+    // Row 2: Call Dispositions (Donut, w: 8) & Weekly Calling Velocity (Axis, w: 12)
+    {
+      name: 'call_dispositions',
+      type: 'donut_chart',
+      layout: { x: 0, y: 3, w: 8, h: 8, i: 'call_dispositions' },
+      data: {
+        title: 'Call Dispositions & Outcomes',
+        subtitle: 'Telecalling outcome breakdown',
+        categoryColumn: 'outcome',
+        valueColumn: 'count',
+        data: [
+          { outcome: 'Connected / Interested', count: 485 },
+          { outcome: 'Callback Requested', count: 312 },
+          { outcome: 'Busy / Unreachable', count: 245 },
+          { outcome: 'Not Interested', count: 182 },
+          { outcome: 'Deal Converted', count: 96 },
+        ],
+        colors: ['#10b981', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6'],
+      },
+    },
+    {
+      name: 'weekly_calling_velocity',
+      type: 'axis_chart',
+      layout: { x: 8, y: 3, w: 12, h: 8, i: 'weekly_calling_velocity' },
+      data: {
+        title: 'Weekly Calling Activity & Connects',
+        subtitle: 'Daily dials vs connected calls',
+        xAxis: { key: 'day', type: 'category' },
+        series: [
+          { name: 'Total Dials', type: 'bar', color: '#8b5cf6' },
+          { name: 'Connected', type: 'line', color: '#10b981', showDataPoints: true },
+        ],
+        data: [
+          { day: 'Mon', 'Total Dials': 240, Connected: 165 },
+          { day: 'Tue', 'Total Dials': 285, Connected: 198 },
+          { day: 'Wed', 'Total Dials': 310, Connected: 220 },
+          { day: 'Thu', 'Total Dials': 295, Connected: 205 },
+          { day: 'Fri', 'Total Dials': 210, Connected: 140 },
+          { day: 'Sat', 'Total Dials': 88, Connected: 52 },
+        ],
+      },
+    },
+
+    // Row 3: Sales Rep Leaderboard (Axis, w: 12) & Inbound Channels (Donut, w: 8)
+    {
+      name: 'agent_calling_leaderboard',
+      type: 'axis_chart',
+      layout: { x: 0, y: 11, w: 12, h: 8, i: 'agent_calling_leaderboard' },
+      data: {
+        title: 'Sales Agent Calling Leaderboard',
+        subtitle: 'Calls dialed and deals closed by agent',
+        xAxis: { key: 'agent', type: 'category' },
+        series: [
+          { name: 'Calls Dialed', type: 'bar', color: '#6366f1' },
+          { name: 'Deals Won', type: 'line', color: '#f59e0b', showDataPoints: true },
+        ],
+        data: [
+          { agent: 'Alex Rivera', 'Calls Dialed': 482, 'Deals Won': 4 },
+          { agent: 'Sarah Connor', 'Calls Dialed': 396, 'Deals Won': 3 },
+          { agent: 'Administrator', 'Calls Dialed': 275, 'Deals Won': 2 },
+          { agent: 'Elena Rostova', 'Calls Dialed': 275, 'Deals Won': 1 },
+        ],
+      },
+    },
+    {
+      name: 'lead_inbound_channels',
+      type: 'donut_chart',
+      layout: { x: 12, y: 11, w: 8, h: 8, i: 'lead_inbound_channels' },
+      data: {
+        title: 'Lead Inbound Channels',
+        subtitle: 'Lead volume by acquisition source',
+        categoryColumn: 'source',
+        valueColumn: 'leads',
+        data: [
+          { source: 'Website Inbound', leads: 42 },
+          { source: 'Paid Search Ads', leads: 28 },
+          { source: 'Referral & Partner', leads: 22 },
+          { source: 'Cold Calling', leads: 18 },
+          { source: 'Events & Webinars', leads: 12 },
+        ],
+        colors: ['#6366f1', '#06b6d4', '#10b981', '#f59e0b', '#ec4899'],
+      },
+    },
+
+    // Row 4: Deals by Pipeline Stage (Axis, w: 10) & Hourly Calling Distribution (Axis Area, w: 10)
+    {
+      name: 'pipeline_stage_value',
+      type: 'axis_chart',
+      layout: { x: 0, y: 19, w: 10, h: 8, i: 'pipeline_stage_value' },
+      data: {
+        title: 'Pipeline Stages by Value ($)',
+        subtitle: 'Weighted pipeline values across deal stages',
+        xAxis: { key: 'stage', type: 'category' },
+        series: [
+          { name: 'Pipeline Value', type: 'bar', color: '#3b82f6' },
+        ],
+        data: [
+          { stage: 'Qualification', 'Pipeline Value': 190000 },
+          { stage: 'Needs Analysis', 'Pipeline Value': 420000 },
+          { stage: 'Proposal Sent', 'Pipeline Value': 940000 },
+          { stage: 'Negotiation', 'Pipeline Value': 240000 },
+          { stage: 'Closed Won', 'Pipeline Value': 310000 },
+        ],
+      },
+    },
+    {
+      name: 'hourly_calling_velocity',
+      type: 'axis_chart',
+      layout: { x: 10, y: 19, w: 10, h: 8, i: 'hourly_calling_velocity' },
+      data: {
+        title: 'Hourly Calling Velocity',
+        subtitle: 'Peak telecalling hours throughout the workday',
+        xAxis: { key: 'hour', type: 'category' },
+        series: [
+          { name: 'Calls Dialed', type: 'area', color: '#8b5cf6' },
+        ],
+        data: [
+          { hour: '09:00', 'Calls Dialed': 95 },
+          { hour: '10:00', 'Calls Dialed': 185 },
+          { hour: '11:00', 'Calls Dialed': 240 },
+          { hour: '12:00', 'Calls Dialed': 140 },
+          { hour: '13:00', 'Calls Dialed': 65 },
+          { hour: '14:00', 'Calls Dialed': 210 },
+          { hour: '15:00', 'Calls Dialed': 235 },
+          { hour: '16:00', 'Calls Dialed': 175 },
+          { hour: '17:00', 'Calls Dialed': 83 },
+        ],
+      },
+    },
+  ]
 }
 
 // In-Memory Client Resource Fetcher
@@ -1294,65 +1681,49 @@ export async function mockResourceFetcher(options) {
     return ''
   }
 
-  // 21. Dashboard (Manager & Insights)
+  // 21. Dashboard (Manager & TeleCRM Insights)
   if (url.includes('dashboard.get_dashboard')) {
-    return [
-      {
-        name: 'total_leads',
-        type: 'number_chart',
-        tooltip: 'Total number of leads',
-        layout: { x: 0, y: 0, w: 4, h: 3, i: 'total_leads' },
-        data: {
-          title: 'Total Leads',
-          value: 84,
-          tooltip: 'Total number of active leads in pipeline',
-        },
-      },
-      {
-        name: 'ongoing_deals',
-        type: 'number_chart',
-        tooltip: 'Total number of ongoing deals',
-        layout: { x: 4, y: 0, w: 4, h: 3, i: 'ongoing_deals' },
-        data: {
-          title: 'Ongoing Deals',
-          value: 14,
-          tooltip: 'Active negotiations and qualified opportunities',
-        },
-      },
-      {
-        name: 'won_deals',
-        type: 'number_chart',
-        tooltip: 'Total number of won deals',
-        layout: { x: 8, y: 0, w: 4, h: 3, i: 'won_deals' },
-        data: {
-          title: 'Won Deals',
-          value: 6,
-          tooltip: 'Successfully closed enterprise contracts',
-        },
-      },
-      {
-        name: 'average_won_deal_value',
-        type: 'number_chart',
-        tooltip: 'Average value of won deals',
-        layout: { x: 12, y: 0, w: 4, h: 3, i: 'average_won_deal_value' },
-        data: {
-          title: 'Avg Won Deal Value',
-          value: '$51,666',
-          tooltip: 'Average ARR of closed agreements',
-        },
-      },
-      {
-        name: 'average_deal_value',
-        type: 'number_chart',
-        tooltip: 'Average deal value of ongoing and won deals',
-        layout: { x: 16, y: 0, w: 4, h: 3, i: 'average_deal_value' },
-        data: {
-          title: 'Average Deal Value',
-          value: '$105,000',
-          tooltip: 'Average deal value across pipeline',
-        },
-      },
-    ]
+    return getTelecrmDashboard(params)
+  }
+
+  if (url.includes('dashboard.get_chart_options')) {
+    return {
+      chart_types: [
+        { label: 'Number Card', value: 'number_chart' },
+        { label: 'Donut Chart', value: 'donut_chart' },
+        { label: 'Axis Chart', value: 'axis_chart' },
+        { label: 'Spacer', value: 'spacer' },
+      ],
+      number_chart: [
+        { label: 'Calls Dialed', value: 'calls_dialed' },
+        { label: 'Connect Rate (%)', value: 'connected_rate' },
+        { label: 'Total Talk Time', value: 'total_talk_time' },
+        { label: 'Pending Callbacks', value: 'callbacks_due' },
+        { label: 'Won Revenue ($)', value: 'won_deals_value' },
+      ],
+      donut_chart: [
+        { label: 'Call Dispositions & Outcomes', value: 'call_dispositions' },
+        { label: 'Lead Inbound Channels', value: 'lead_inbound_channels' },
+      ],
+      axis_chart: [
+        { label: 'Weekly Calling Activity & Connects', value: 'weekly_calling_velocity' },
+        { label: 'Sales Agent Calling Leaderboard', value: 'agent_calling_leaderboard' },
+        { label: 'Pipeline Stages by Value', value: 'pipeline_stage_value' },
+        { label: 'Hourly Calling Velocity', value: 'hourly_calling_velocity' },
+      ],
+    }
+  }
+
+  if (url.includes('dashboard.get_chart')) {
+    const name = params.name || ''
+    const all = getTelecrmDashboard(params)
+    const found = all.find((item) => item.name === name)
+    if (found) return found
+    return all[0]
+  }
+
+  if (url.includes('dashboard.reset_to_default')) {
+    return { message: 'ok' }
   }
 
   // 22. Home Layouts

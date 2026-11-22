@@ -15,14 +15,6 @@
 
 <br/>
 
-<div>
-  <picture>
-    <img width="1200" alt="CRM Pipeline View" src=".github/screenshots/MainDealPage.png">
-  </picture>
-</div>
-
-<br/>
-
 [Features](#key-features) • [Quickstart](#getting-started) • [Testing](#running-tests) • [Architecture](#architecture)
 
 </div>
@@ -42,13 +34,7 @@
 - **Interactive Activity Timeline**: Chronological tracking of meetings, email interactions, notes, follow-up calls, and system events.
 - **Custom Views & Smart Filtering**: Build, save, and share filtered views with custom sorting, dynamic queries, and column layouts.
 - **Integrated Calling & Communications**: Make and log calls directly from the browser with agent call logs, recording playback, and audio controls.
-- **Zero-API Standalone Demo Engine**: Runs out of the box with an in-memory mock engine pre-seeded with realistic leads, deals, contacts, and organizations.
-
-<div>
-  <picture>
-    <img width="1200" alt="CRM Dashboard & Pipeline Workspace" src=".github/screenshots/Dashboard.png">
-  </picture>
-</div>
+- **Zero-API Standalone Demo Engine**: Runs out of the box with an in-memory mock engine pre-seeded with realistic leads, deals, contacts, organizations, and telecalling analytics.
 
 ---
 
