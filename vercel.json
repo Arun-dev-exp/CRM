@@ -1,12 +1,12 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "cd frontend && yarn build",
+  "framework": "vite",
+  "buildCommand": "cd frontend && yarn build && node -e \"const fs=require('fs'); if(fs.existsSync('frontend/dist')){fs.cpSync('frontend/dist','dist',{recursive:true})}\"",
   "outputDirectory": "frontend/dist",
-  "cleanUrls": true,
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/index.html"
+      "destination": "/"
     }
   ]
 }

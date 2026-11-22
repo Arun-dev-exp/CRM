@@ -195,7 +195,7 @@ export default defineConfig(() => {
         source: '^/(desk|app|login|api|assets|files|private|crm-form|crm-book)',
       },
       lucideIcons: true,
-      jinjaBootData: true,
+      jinjaBootData: !isVercel,
       // its esbuild helper breaks Vite 8's dependency scan
       codeLanguages: false,
       buildConfig: buildConfigOptions,

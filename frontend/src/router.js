@@ -20,6 +20,20 @@ function getSetupRedirect(to) {
 
 const routes = [
   {
+    path: '/crm',
+    redirect: '/',
+  },
+  {
+    path: '/crm/:pathMatch(.*)*',
+    redirect: (to) =>
+      '/' +
+      (to.params.pathMatch
+        ? Array.isArray(to.params.pathMatch)
+          ? to.params.pathMatch.join('/')
+          : to.params.pathMatch
+        : ''),
+  },
+  {
     path: '/',
     name: 'Home',
     component: () => import('@/pages/Home.vue'),
@@ -170,8 +184,14 @@ async function landingPageRoute() {
   return landingRoute(page, views.data, (name) => router.hasRoute(name))
 }
 
+const isCrmPath =
+  typeof window !== 'undefined' &&
+  window.location?.pathname &&
+  window.location.pathname.startsWith('/crm')
+const routerBase = isCrmPath ? '/crm' : '/'
+
 let router = createRouter({
-  history: createWebHistory('/crm'),
+  history: createWebHistory(routerBase),
   routes,
 })
 
