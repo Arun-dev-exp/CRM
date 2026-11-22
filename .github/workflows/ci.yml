@@ -13,19 +13,13 @@ concurrency:
 
 jobs:
   test:
-    name: Frontend Unit Tests
+    name: Frontend Tests & Build
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Clone @framework/ui dependency
-        run: |
-          git clone --depth 1 --branch develop --filter=blob:none --sparse \
-              https://github.com/frappe/frappe "$GITHUB_WORKSPACE/../frappe"
-          git -C "$GITHUB_WORKSPACE/../frappe" sparse-checkout set ui frappe/geo frappe/public/js/frappe/utils
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -42,3 +36,9 @@ jobs:
       - name: Run unit tests
         working-directory: frontend
         run: yarn test:run
+
+      - name: Build frontend
+        working-directory: frontend
+        env:
+          VERCEL: "1"
+        run: yarn build

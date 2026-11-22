@@ -44,20 +44,11 @@
 - **Integrated Calling & Communications**: Make and log calls directly from the browser with agent call logs, recording playback, and audio controls.
 - **Zero-API Standalone Demo Engine**: Runs out of the box with an in-memory mock engine pre-seeded with realistic leads, deals, contacts, and organizations.
 
-<details>
-<summary><b>Click to expand screenshots</b></summary>
-
-<br/>
-
-| Lead Management | Deal Details & Timeline |
-|:---:|:---:|
-| <img src=".github/screenshots/LeadList.png" alt="Lead List" width="550"> | <img src=".github/screenshots/LeadPage.png" alt="Lead Page" width="550"> |
-
-| In-App Calling | Communication History |
-|:---:|:---:|
-| <img src=".github/screenshots/CallUI.png" alt="Call UI" width="550"> | <img src=".github/screenshots/CallLog.png" alt="Call Log" width="550"> |
-
-</details>
+<div>
+  <picture>
+    <img width="1200" alt="CRM Dashboard & Pipeline Workspace" src=".github/screenshots/Dashboard.png">
+  </picture>
+</div>
 
 ---
 
