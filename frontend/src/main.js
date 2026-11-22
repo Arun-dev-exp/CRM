@@ -32,7 +32,12 @@ import {
   installMockApiInterceptor,
 } from './data/mockFetcher'
 
-if (import.meta.env.DEV) {
+const isStandalone =
+  import.meta.env.DEV ||
+  typeof window.boot === 'undefined' ||
+  import.meta.env.VITE_STANDALONE === 'true'
+
+if (isStandalone) {
   installMockApiInterceptor()
 }
 
@@ -53,7 +58,7 @@ let app = createApp(App)
 
 setConfig(
   'resourceFetcher',
-  import.meta.env.DEV ? mockResourceFetcher : frappeRequest,
+  isStandalone ? mockResourceFetcher : frappeRequest,
 )
 app.use(FrappeUI)
 app.use(spritePlugin)
@@ -79,16 +84,13 @@ function mountCrmApp(values = {}) {
   app.mount('#app')
 }
 
-if (import.meta.env.DEV) {
+if (isStandalone) {
   // Mount immediately with in-memory zero-API boot context
   mountCrmApp(defaultDevBoot)
+  window.$dialog = createDialog
 } else {
   socket = initSocket()
   app.config.globalProperties.$socket = socket
   app.use(router)
   app.mount('#app')
-}
-
-if (import.meta.env.DEV) {
-  window.$dialog = createDialog
 }

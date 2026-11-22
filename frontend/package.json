@@ -8,15 +8,15 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/assets/crm/frontend/ && yarn copy-html-entry",
-    "copy-html-entry": "cp ../crm/public/frontend/index.html ../crm/www/crm.html",
+    "build": "vite build && node -e \"const fs=require('fs'); if(!process.env.VERCEL && fs.existsSync('../crm/public/frontend/index.html')){fs.copyFileSync('../crm/public/frontend/index.html','../crm/www/crm.html')}\"",
+    "copy-html-entry": "node -e \"const fs=require('fs'); if(fs.existsSync('../crm/public/frontend/index.html')){fs.copyFileSync('../crm/public/frontend/index.html','../crm/www/crm.html')}\"",
     "serve": "vite preview",
     "test": "vitest",
     "test:run": "vitest run",
     "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
-    "@framework/ui": "link:../../frappe/ui",
+    "@framework/ui": "link:./packages/framework-ui",
     "@frappe/cloud-sdk": "0.5.0",
     "@headlessui/vue": "^1.7.23",
     "@tiptap/core": "^3.26.0",
@@ -29,7 +29,7 @@
     "@vue-flow/core": "^1.48.2",
     "@vueuse/core": "^14.1.0",
     "@vueuse/integrations": "^14.1.0",
-    "@whatsapp/ui": "link:../../whatsapp/ui",
+    "@whatsapp/ui": "link:./packages/whatsapp-ui",
     "cropperjs": "^2.1.1",
     "dompurify": "^3.3.3",
     "frappe-ui": "1.0.0-rc.2",

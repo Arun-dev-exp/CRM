@@ -13,6 +13,26 @@ import { crmDevPlugin } from './devServerMock.js'
 const whatsappUI = path.resolve(import.meta.dirname, '../../whatsapp/ui/src')
 const hasWhatsAppUI = fs.existsSync(whatsappUI)
 
+const frameworkUIDir = fs.existsSync(
+  path.resolve(import.meta.dirname, 'packages/framework-ui'),
+)
+  ? path.resolve(import.meta.dirname, 'packages/framework-ui')
+  : path.resolve(import.meta.dirname, '../../frappe/ui')
+
+const whatsappUIDir = hasWhatsAppUI
+  ? whatsappUI
+  : fs.existsSync(
+        path.resolve(import.meta.dirname, 'packages/whatsapp-ui/index.js'),
+      )
+    ? path.resolve(import.meta.dirname, 'packages/whatsapp-ui/index.js')
+    : path.resolve(import.meta.dirname, 'src/whatsapp/unavailable.js')
+
+const isVercel = Boolean(
+  process.env.VERCEL ||
+    process.env.BUILD_STANDALONE ||
+    !fs.existsSync(path.resolve(import.meta.dirname, '../crm')),
+)
+
 export default defineConfig(() => {
   const config = {
     define: {
@@ -69,21 +89,13 @@ export default defineConfig(() => {
       alias: {
         '@': path.resolve(import.meta.dirname, 'src'),
         // ahead of '@framework/ui': the island lives outside ui/src
-        '@framework/ui/island': path.resolve(
-          import.meta.dirname,
-          '../../frappe/ui/island',
-        ),
+        '@framework/ui/island': path.resolve(frameworkUIDir, 'island'),
         // point at the package src dir (not index.ts) so subpath imports like
         // `@whatsapp/ui/components/Messages` resolve to a real file
-        '@whatsapp/ui': hasWhatsAppUI
-          ? whatsappUI
-          : path.resolve(import.meta.dirname, 'src/whatsapp/unavailable.js'),
+        '@whatsapp/ui': whatsappUIDir,
         // same shape for @framework/ui: its account form pieces (Grid, Link) are
         // what @whatsapp/ui's AccountForm is built on
-        '@framework/ui': path.resolve(
-          import.meta.dirname,
-          '../../frappe/ui/src',
-        ),
+        '@framework/ui': path.resolve(frameworkUIDir, 'src'),
       },
       // ensure the linked @whatsapp/ui package reuses the host app's single copy of each peer:
       // the symlinked source has no node_modules of its own, so dedupe resolves its imports
@@ -149,6 +161,31 @@ export default defineConfig(() => {
     },
   }
 
+  const backendTarget = process.env.APP_URL || process.env.BACKEND_URL
+  if (backendTarget) {
+    config.server = config.server || {}
+    config.server.proxy = config.server.proxy || {}
+    config.server.proxy['^/(desk|app|login|api|assets|files|private|crm-form|crm-book)'] = {
+      target: backendTarget,
+      changeOrigin: true,
+      ws: true,
+    }
+  }
+
+  const buildConfigOptions = isVercel
+    ? {
+        outDir: path.resolve(import.meta.dirname, 'dist'),
+        indexHtmlPath: path.resolve(import.meta.dirname, 'dist/index.html'),
+        baseUrl: '/',
+        emptyOutDir: true,
+        sourcemap: false,
+      }
+    : {
+        indexHtmlPath: '../crm/www/crm.html',
+        emptyOutDir: true,
+        sourcemap: true,
+      }
+
   config.plugins.unshift(
     crmDevPlugin(),
     frappeui({
@@ -161,11 +198,7 @@ export default defineConfig(() => {
       jinjaBootData: true,
       // its esbuild helper breaks Vite 8's dependency scan
       codeLanguages: false,
-      buildConfig: {
-        indexHtmlPath: '../crm/www/crm.html',
-        emptyOutDir: true,
-        sourcemap: true,
-      },
+      buildConfig: buildConfigOptions,
     }),
   )
 
